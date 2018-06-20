@@ -344,36 +344,32 @@
                 <span>Learn Markdown Language</span>
         </a>
         <div class="abstract-content">
-            Preference SettingsGo to File $\rightarrow$ Preference:
+            [TOC]
+Preference Settings
+Go to File $\rightarrow$ Preference:
+
 
 [x] 内联公式
 
+
 [x] 下标
+
 
 [x] 上标
 
+
 [x] 高亮
+
 
 [x] 匹配MarkDown字符
 
 
-
 Title 标题
-
-Math formula 数学公式设置好偏好后，用 Tex 公式即可
-
-$\lim_{x \to \infty} \ exp(-x)=0 $
-
-
-   
-   $$   lim_{x \to \infty} \ exp(-x)=0   $$
-   
-   content
-
-
-Subscript 下标H~2~o 
-
-Superscript 上标y^2^...
+#(blank space)title (at most #x7)
+Math formula 数学公式
+设置好偏好后，用 Tex 公式即可,$$+回车(Enter) 引出Code Block
+1$lim_&#123;x \to \infty&#125; \ exp(-x)=0$
+Latex:   $\lim_{x \to \inf...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -618,7 +614,23 @@ jsonContent:
     </div>
     <!-- async load share.js -->
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+</body>
 </html>
 
 
