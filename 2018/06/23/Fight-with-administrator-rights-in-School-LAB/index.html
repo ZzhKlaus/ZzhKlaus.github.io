@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="Cache-Control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>Hello World · Burgundy.</title>
+    <title>Fight with administrator rights in School LAB · Burgundy.</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -210,7 +210,7 @@
                 <a href="/" >Burgundy.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Hello World</a>
+                <a href="#" class="post-name">Fight with administrator rights in School LAB</a>
             </div>
     </div>
     
@@ -242,7 +242,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Hello World
+            Fight with administrator rights in School LAB
             <!-- 404 -->
             
         </h1>
@@ -259,14 +259,22 @@ height:50vh;
             <div class="post-intros">
                 <!-- 文章页标签  -->
                 
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "administrator rights">administrator rights</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "bugs">bugs</a>
+    
+</div>
+                
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count">78</span> / Reading time: <span class="post-count">1 min</span></span>
+                        <span>Word count: <span class="post-count">257</span> / Reading time: <span class="post-count">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2018/06/20</span>
+                    <span class="post-intro-time">2018/06/23</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -390,15 +398,16 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <blockquote>
+<p>When working at the computer lab of HS building, I want to rebuild the flask environment in the school’s computer, but many changes to the computer need an administrator password which is hard to get, then I find some tricks to climb over it without a password.</p>
+</blockquote>
+<h1 id="Chrome-is-fantastic"><a href="#Chrome-is-fantastic" class="headerlink" title="Chrome is fantastic"></a>Chrome is fantastic</h1><p>The fist step is to install chrome which contains many of my important bookmarks. The Google official installer of Chrome offers the function to ignore the administrator rights and install itself, which inspires me that maybe I could find more tricks to achieve my goal. By the way, the <strong>ShadowSocks</strong> is a portable app that doesn’t need installation and easy to use, and <strong>Sublime Text</strong> also has the portable version.</p>
+<h1 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h1><p>It surprised me that the installation of Anaconda is smooth and no pop-up window of entering password showed up. But then I find the <code>conda</code> command within <code>cmd</code> is not found, which means that I need to add the system environment variable by myself. Moreover, I found that the conventional way (Computer$\rightarrow$ Properties$\rightarrow$ Advanced system settings) to add it didn’t work, which need administrator rights, too. Fortunately, the variables could be added through <code>cmd</code>, like if we want to add <code>Anaconda\Scripts</code> to the <strong>path</strong>, try</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> path=%path%;c:\Anaconda\Scritps</span><br></pre></td></tr></table></figure>
+<p>and set testify it, try</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> path</span><br></pre></td></tr></table></figure>
+<p>Then you could see the new path added successfully.</p>
+<p><strong>However, I found that the setting is a temporary solution, after the close of <code>cmd</code> these setting would be cleared.  </strong></p>
 
     </article>
     <!-- license  -->
@@ -407,13 +416,13 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/06/20/Learn-Markdown-Language/" title= Learn Markdown Language >
-                    <div class="nextTitle">Learn Markdown Language</div>
-                </a>
-            
         </li>
         <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/06/21/Summary-of-SURF2017/" title= Summary of SURF2017 >
+                    <div class="prevTitle">Summary of SURF2017</div>
+                </a>
             
         </li>
     </ul>
@@ -545,7 +554,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Chrome-is-fantastic"><span class="toc-number">1.</span> <span class="toc-text">Chrome is fantastic</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Anaconda"><span class="toc-number">2.</span> <span class="toc-text">Anaconda</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
