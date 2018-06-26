@@ -401,13 +401,15 @@ height:50vh;
         <blockquote>
 <p>When working at the computer lab of HS building, I want to rebuild the flask environment in the school’s computer, but many changes to the computer need an administrator password which is hard to get, then I find some tricks to climb over it without a password.</p>
 </blockquote>
-<h1 id="Chrome-is-fantastic"><a href="#Chrome-is-fantastic" class="headerlink" title="Chrome is fantastic"></a>Chrome is fantastic</h1><p>The fist step is to install chrome which contains many of my important bookmarks. The Google official installer of Chrome offers the function to ignore the administrator rights and install itself, which inspires me that maybe I could find more tricks to achieve my goal. By the way, the <strong>ShadowSocks</strong> is a portable app that doesn’t need installation and easy to use, and <strong>Sublime Text</strong> also has the portable version.</p>
-<h1 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h1><p>It surprised me that the installation of Anaconda is smooth and no pop-up window of entering password showed up. But then I find the <code>conda</code> command within <code>cmd</code> is not found, which means that I need to add the system environment variable by myself. Moreover, I found that the conventional way (Computer$\rightarrow$ Properties$\rightarrow$ Advanced system settings) to add it didn’t work, which need administrator rights, too. Fortunately, the variables could be added through <code>cmd</code>, like if we want to add <code>Anaconda\Scripts</code> to the <strong>path</strong>, try</p>
+<h1>Chrome is fantastic</h1>
+<p>The fist step is to install chrome which contains many of my important bookmarks. The Google official installer of Chrome offers the function to ignore the administrator rights and install itself, which inspires me that maybe I could find more tricks to achieve my goal. By the way, the <strong>ShadowSocks</strong> is a portable app that doesn’t need installation and easy to use, and <strong>Sublime Text</strong> also has the portable version.</p>
+<h1>Anaconda</h1>
+<p>It surprised me that the installation of Anaconda is smooth and no pop-up window of entering password showed up. But then I find the <code>conda</code> command within <code>cmd</code> is not found, which means that I need to add the system environment variable by myself. Moreover, I found that the conventional way (Computer$\rightarrow$ Properties$\rightarrow$ Advanced system settings) to add it didn’t work, which need administrator rights, too. Fortunately, the variables could be added through <code>cmd</code>, like if we want to add <code>Anaconda\Scripts</code> to the <strong>path</strong>, try</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> path=%path%;c:\Anaconda\Scritps</span><br></pre></td></tr></table></figure>
 <p>and set testify it, try</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> path</span><br></pre></td></tr></table></figure>
 <p>Then you could see the new path added successfully.</p>
-<p><strong>However, I found that the setting is a temporary solution, after the close of <code>cmd</code> these setting would be cleared.  </strong></p>
+<p>**However, I found that the setting is a temporary solution, after the close of <code>cmd</code> these setting would be cleared.  **</p>
 
     </article>
     <!-- license  -->
@@ -554,7 +556,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Chrome-is-fantastic"><span class="toc-number">1.</span> <span class="toc-text">Chrome is fantastic</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Anaconda"><span class="toc-number">2.</span> <span class="toc-text">Anaconda</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Chrome is fantastic</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">Anaconda</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -567,6 +569,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -660,13 +664,13 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="markdown"><span class="iconfont-archer">&#xe606;</span>markdown</span>
-    
-        <span class="sidebar-tag-name" data-tags="tutorial"><span class="iconfont-archer">&#xe606;</span>tutorial</span>
-    
         <span class="sidebar-tag-name" data-tags="administrator rights"><span class="iconfont-archer">&#xe606;</span>administrator rights</span>
     
         <span class="sidebar-tag-name" data-tags="bugs"><span class="iconfont-archer">&#xe606;</span>bugs</span>
+    
+        <span class="sidebar-tag-name" data-tags="markdown"><span class="iconfont-archer">&#xe606;</span>markdown</span>
+    
+        <span class="sidebar-tag-name" data-tags="tutorial"><span class="iconfont-archer">&#xe606;</span>tutorial</span>
     
         <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
     
@@ -740,23 +744,7 @@ jsonContent:
     
         <script src="/scripts/share.js" async></script>    
      
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
-</body>
+    </body>
 </html>
 
 
