@@ -269,7 +269,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count">2,439</span> / Reading time: <span class="post-count">15 min</span></span>
+                        <span>Word count: <span class="post-count">2,440</span> / Reading time: <span class="post-count">15 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,8 +401,7 @@ height:50vh;
         <blockquote>
 <p>A new SURF(Summer Undergraduate Research Fellowships) project of 2018 has been launched now,  and it is based the outcomes of SURF 2017 project (Indoor Localization  Based on Wi-Fi Fingerprinting with Deep Learning and Fuzzy Sets). As the members of both projects, Klaus would introduce to new members of previous work related to server part, as well as a work summary of last project, and it’s the reason for writing this blog.</p>
 </blockquote>
-<h1>Indoor Localization — Background problems</h1>
-<p>Key words:</p>
+<h1 id="Indoor-Localization-—-Background-problems"><a href="#Indoor-Localization-—-Background-problems" class="headerlink" title="Indoor Localization —- Background problems"></a>Indoor Localization —- Background problems</h1><p> Key words: </p>
 <ul>
 <li>RSS: Received signal strength  接收信号强度 (usually between 0dbm and -90dbm)</li>
 <li>RSSI: Received signal strength Indication 接收信号强度指示 (adjusted RSS presented as a positive value )</li>
@@ -413,42 +412,34 @@ height:50vh;
 <li>TDOA: Time difference of arrival 到达时间差</li>
 <li>AOA: Angle of arrival</li>
 </ul>
-<h3 id="why-not-gps"><a class="header-anchor" href="#why-not-gps">¶</a>Why not GPS</h3>
-<ul>
+<h3 id="Why-not-GPS"><a href="#Why-not-GPS" class="headerlink" title="Why not GPS"></a>Why not GPS</h3><ul>
 <li>No direct line of sight between satellites and receives.</li>
 </ul>
-<h3 id="why-choose-rf-fingerprinting-schemes"><a class="header-anchor" href="#why-choose-rf-fingerprinting-schemes">¶</a>Why choose RF fingerprinting schemes</h3>
-<ul>
-<li>Widespread network devices — easily deployable.</li>
-<li>Reasonable performance</li>
+<h3 id="Why-choose-RF-fingerprinting-schemes"><a href="#Why-choose-RF-fingerprinting-schemes" class="headerlink" title="Why choose RF fingerprinting schemes"></a>Why choose RF fingerprinting schemes</h3><ul>
+<li>Widespread network devices —- easily deployable.</li>
+<li>Reasonable performance </li>
 <li>Affordable cost</li>
 </ul>
 <p>Global Positioning System (GPS) is commonly used for outdoor localization but it performs poorly in indoor environment, because it demands a direct line of sight between the satellites and the receiver for accurate localization. WiFi signals are widely distributed within indoor environment, then the usage of it for localization would need no extra hardware and is very economical. However, traditional methods which based on time and angles may not be suitable for WiFi signals,  that why the fingerprints methods are widely applied.</p>
-<h1>Algorithms used in Indoor Localization</h1>
-<ol>
-<li>
-<p><strong>Triangulation algorithm</strong></p>
+<h1 id="Algorithms-used-in-Indoor-Localization"><a href="#Algorithms-used-in-Indoor-Localization" class="headerlink" title="Algorithms used in Indoor Localization"></a>Algorithms used in Indoor Localization</h1><ol>
+<li><p><strong>Triangulation algorithm</strong></p>
 <p>Where the dark circles are the reference points with known coordination, the white circle is testing point with unknown coordinate. Ideally, due to the characteristic of RF signals which is  the degradation of signal strength over distance, it is possible to obtain a final distance to the reference point according to the detected signal strength, and with three circles of possible locations, we finally determined the real location.</p>
 </li>
 </ol>
-<p><img src="/2018/06/21/Summary-of-SURF2017/triangle-algorithm.jpg" alt="triangle-algorithm"></p>
-<p>However, in indoor environment, the signal strength varies irregularly, as it gets further away from the radio transmitter, due to phenomenon such as reflection, diffraction, and interference. The irregularity becomes the main cause for the inaccuracy for the inaccuracy of existing RF signal-based indoor localization algorithms.</p>
-<ol start="2">
-<li>
-<p><strong>Fingerprint localization algorithm</strong></p>
+<p>   <img src="/2018/06/21/Summary-of-SURF2017/triangle-algorithm.jpg" alt="triangle-algorithm"></p>
+<p>   However, in indoor environment, the signal strength varies irregularly, as it gets further away from the radio transmitter, due to phenomenon such as reflection, diffraction, and interference. The irregularity becomes the main cause for the inaccuracy for the inaccuracy of existing RF signal-based indoor localization algorithms.</p>
 <ol>
-<li>
-<p>Data collection and storage.</p>
+<li><p><strong>Fingerprint localization algorithm</strong></p>
+<ol>
+<li><p>Data collection and storage.</p>
 <p>Use mobile devices (mobile phone, Raspberry Pi and so on) to scan the near APs as well as the related BSSID, which combines with location coordinates are stored in the database as fingerprint, and the fingerprint indicates this location. Usually, there need plenty of fingerprints for one location in terms of different direction and height of scanning as well as different time period of one day, to ensure the complete coverage and robustness. However, as discussed before, a huge amount of data need to be collected, which is a large cost of time and labour; and the requirements for server part and data storage is also very high.</p>
 <p><img src="/2018/06/21/Summary-of-SURF2017/floor.jpg" alt="floor"></p>
-<p><img src="/2018/06/21/Summary-of-SURF2017/Summary-of-SURF2017%5Cdemo.jpg" alt="demo"></p>
+<p><img src="/2018/06/21/Summary-of-SURF2017/demo.jpg" alt="demo"></p>
 </li>
-<li>
-<p>Train the neural network and model generation</p>
+<li><p>Train the neural network and model generation</p>
 <p>This part is carried out by Jeff Wong, with the collected data it is able to generate a DNN-based indoor localization model.</p>
 </li>
-<li>
-<p>Testing.</p>
+<li><p>Testing.</p>
 <ul>
 <li>client (Android mobile phone with <strong>WiFiScanner</strong>, or <strong>Raspberry Pi</strong>)</li>
 <li>server with localization algorithm</li>
@@ -462,34 +453,28 @@ height:50vh;
 <blockquote>
 <p>As you may see, the algorithm is not that difficult, the most of time is spent in the engineering part, including the Flask server construction, android programming as well as database managing, then I will go in details of there parts.</p>
 </blockquote>
-<h1>WampServer</h1>
-<p><img src="/2018/06/21/Summary-of-SURF2017/Summary-of-SURF2017%5CWampServer.png" alt="WampServer"></p>
+<h1 id="WampServer"><a href="#WampServer" class="headerlink" title="WampServer"></a>WampServer</h1><p><img src="/2018/06/21/Summary-of-SURF2017/WampServer.png" alt="WampServer"></p>
 <p><a href="http://www.wampserver.com/en/" target="_blank" rel="noopener">WampServer</a>  is a Windows web development environment which combines Apache, PHP, and MySQL. Before the construction of FLASK, it was used to quickly build up a local web server,  test the connection and communication between it and the mobile phone, as well as a prototype of data collection and storage.</p>
 <ul>
 <li>Quick start up and prototyping</li>
 <li>Complete environment</li>
 </ul>
-<h1>Anaconda (set up the environment)</h1>
-<blockquote>
+<h1 id="Anaconda-set-up-the-environment"><a href="#Anaconda-set-up-the-environment" class="headerlink" title="Anaconda (set up the environment)"></a>Anaconda (set up the environment)</h1><blockquote>
 <p>Anaconda is very convenient to build up the virtual environment and manage packages, but it is not necessary. You could just use python to build the virtual environment, too. Just choose the way you like.</p>
 </blockquote>
 <p><a href="https://www.anaconda.com/" target="_blank" rel="noopener">Anaconda</a> is very powerful and is’s highly recommended while dealing with Python and R data science and machine learning on Windows, Linux, and Mac OS X. I personally regard it as a libraries management platform which enables multi-versions control. It is recommended to build virtual environment for every project with different version requirement for libraries and applications, while avoid conflicts with others.</p>
 <ul>
 <li>Python + R, data science + machine learning</li>
-<li>multi-platform — Windows, Linux, and Mac OS X</li>
+<li>multi-platform —- Windows, Linux, and Mac OS X</li>
 <li>Libraries management</li>
 </ul>
-<p><img src="/2018/06/21/Summary-of-SURF2017/Summary-of-SURF2017%5CAnaconda.jpg" alt="Anaconda"></p>
+<p><img src="/2018/06/21/Summary-of-SURF2017/Anaconda.jpg" alt="Anaconda"></p>
 <ol>
-<li>
-<h1>Download and Installation</h1>
-<p><a href="https://www.anaconda.com/download/" target="_blank" rel="noopener">Download_address</a> (Python 3.6 version)</p>
+<li><h1 id="Download-and-Installation"><a href="#Download-and-Installation" class="headerlink" title="Download and Installation"></a>Download and Installation</h1><p><a href="https://www.anaconda.com/download/" target="_blank" rel="noopener">Download_address</a> (Python 3.6 version)</p>
 </li>
 </ol>
-<ol start="2">
-<li>
-<h1>Conda testing</h1>
-<p>Just like <strong>git</strong> command, the <strong>conda</strong> is both packages manager and environment manager. After the installation, to test if <strong>conda</strong> works well.</p>
+<ol>
+<li><h1 id="Conda-testing"><a href="#Conda-testing" class="headerlink" title="Conda testing"></a>Conda testing</h1><p>Just like <strong>git</strong> command, the <strong>conda</strong> is both packages manager and environment manager. After the installation, to test if <strong>conda</strong> works well.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Windows + R</span><br><span class="line">cmd</span><br><span class="line">conda --version ::it <span class="built_in">return</span> the version of conda</span><br></pre></td></tr></table></figure>
 <p>If the command “conda” is not found, add it to the path of system environment variables. With any confusion of the commands, try <code>--help</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:: is followed with comments </span><br><span class="line">conda &lt;<span class="built_in">command</span>&gt; --<span class="built_in">help</span> ::<span class="built_in">command</span> + --<span class="built_in">help</span> to find more information</span><br></pre></td></tr></table></figure>
@@ -497,10 +482,8 @@ height:50vh;
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda update conda</span><br><span class="line">::check the update detials and confirm</span><br><span class="line">y</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<ol start="3">
-<li>
-<h1>Build up the first environment and activate it</h1>
-<p>As the tensorflow supports up to Python version 3.5 (at least during the SURF 2017 period), this version is recommended. Type below to build up the environment with python 3.5.</p>
+<ol>
+<li><h1 id="Build-up-the-first-environment-and-activate-it"><a href="#Build-up-the-first-environment-and-activate-it" class="headerlink" title="Build up the first environment and activate it"></a>Build up the first environment and activate it</h1><p>As the tensorflow supports up to Python version 3.5 (at least during the SURF 2017 period), this version is recommended. Type below to build up the environment with python 3.5.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name &lt;enviroment_name&gt; python=3.5</span><br></pre></td></tr></table></figure>
 <p><strong>Tips1:</strong> There are many commands starting with <code>--</code> , it is very convenient, use <code>conda --help</code> or <code>conda -h</code> to refer to it.</p>
 <p><strong>Tip2:</strong> If not typing preferred python version like <code>python==3.5</code>,  default version will be installed, for the Anaconda 3.6 the python 3.6 will be installed.</p>
@@ -521,50 +504,38 @@ height:50vh;
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove -n &lt;enviroment_name&gt; &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<ol start="4">
-<li>
-<h1>Packages management</h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda list ::display all installed packages</span><br><span class="line">conda search &lt;package_name&gt; ::check if packeages are available</span><br></pre></td></tr></table></figure>
+<ol>
+<li><h1 id="Packages-management"><a href="#Packages-management" class="headerlink" title="Packages management"></a>Packages management</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda list ::display all installed packages</span><br><span class="line">conda search &lt;package_name&gt; ::check if packeages are available</span><br></pre></td></tr></table></figure>
 <p>For some packages that cannot be installed by <code>conda</code>, we could use <code>pip</code> which has been prepared in Anaconda.</p>
 </li>
 </ol>
-<h1>Flask</h1>
-<p><img src="/2018/06/21/Summary-of-SURF2017/C:%5CFiles%5CGithub_Files%5CZzhKlaus.github.io%5Csource_posts%5CSummary-of-SURF2017%5Cflask.png" alt="flask"></p>
-<h3 id="why-flask-what-it-is"><a class="header-anchor" href="#why-flask-what-it-is">¶</a>Why Flask? what it is ?</h3>
-<p>There are several popular web frameworks, which are <em>Django, <a href="http://web.py" target="_blank" rel="noopener">web.py</a>, tornado</em>, and <em>flask</em>. They have different features,</p>
+<h1 id="Flask"><a href="#Flask" class="headerlink" title="Flask"></a>Flask</h1><p><img src="/2018/06/21/Summary-of-SURF2017/flask.png" alt="flask"></p>
+<h3 id="Why-Flask-what-it-is"><a href="#Why-Flask-what-it-is" class="headerlink" title="Why Flask? what it is ?"></a>Why Flask? what it is ?</h3><p>There are several popular web frameworks, which are <em>Django, web.py, tornado</em>, and <em>flask</em>. They have different features,</p>
 <ul>
-<li>**Django ** is popular but heavy and complex.</li>
-<li><strong><a href="http://web.py" target="_blank" rel="noopener">web.py</a></strong> is light but not maintained now.</li>
+<li><strong>Django </strong> is popular but heavy and complex.</li>
+<li><strong>web.py</strong> is light but not maintained now.</li>
 <li><strong>tornado</strong> has not much libraries as flask, may need some repetitive work.</li>
 <li><strong>flask</strong> is light, popular, flexible, and extensible.</li>
 </ul>
 <p><a href="http://flask.pocoo.org/" target="_blank" rel="noopener">Flask</a> is a microframework for <strong>Python</strong> based on <em>Werkzeug</em> (The python WSGI Utility Library ), <em>Jinja2</em>( a full featured template engine for Python ) and good intentions. With flask, a whole web application could be fit into a single python file, with essential functionality; the choices of database and templating engine are also up to users, that is why flask is flexible and can be everything!</p>
 <p>For our project, as both flask and deep learning(DL) framework  are based on python, we can seamlessly integrate them all within a python inside the flask framework. Between receiving a <em>POST</em> request from a user (with a new RSS measurement as part of the request) and receiving a <em>GET</em> request from the same user for a estimated location, we need to call a location estimation function all inside the flask framework.</p>
-<h3 id="restful-framework"><a class="header-anchor" href="#restful-framework">¶</a>RESTful framework</h3>
-<p><strong>Representational State Transfer</strong> (<strong>REST</strong>) is an architectural style that defines a set of constraints and properties based on <a href="https://en.wikipedia.org/wiki/HTTP" target="_blank" rel="noopener">HTTP</a>.</p>
-<p><img src="/2018/06/21/Summary-of-SURF2017/C:%5CFiles%5CGithub_Files%5CZzhKlaus.github.io%5Csource_posts%5CSummary-of-SURF2017%5CRESTful_methods.png" alt="RESTful_methods"></p>
+<h3 id="RESTful-framework"><a href="#RESTful-framework" class="headerlink" title="RESTful framework"></a>RESTful framework</h3><p><strong>Representational State Transfer</strong> (<strong>REST</strong>) is an architectural style that defines a set of constraints and properties based on <a href="https://en.wikipedia.org/wiki/HTTP" target="_blank" rel="noopener">HTTP</a>.  </p>
+<p><img src="/2018/06/21/Summary-of-SURF2017/RESTful_methods.png" alt="RESTful_methods"></p>
 <ul>
-<li>
-<p><strong>GET</strong> – Provides a read only access to a resource.</p>
+<li><p><strong>GET</strong> — Provides a read only access to a resource.</p>
 </li>
-<li>
-<p><strong>PUT</strong> – Used to create a new resource.</p>
+<li><p><strong>PUT</strong> — Used to create a new resource.</p>
 </li>
-<li>
-<p><strong>DELETE</strong> – Used to remove a resource.</p>
+<li><p><strong>DELETE</strong> — Used to remove a resource.</p>
 </li>
-<li>
-<p><strong>POST</strong> – Used to update an existing resource or create a new resource.</p>
+<li><p><strong>POST</strong> — Used to update an existing resource or create a new resource.</p>
 </li>
 </ul>
-<p><strong>p.s.</strong> If your want to learn more about <strong>RESTful framework</strong>, try this <a href="https://www.tutorialspoint.com/restful/index.htm" target="_blank" rel="noopener">RESTful Web Services</a>.</p>
-<h3 id="installation-for-windows"><a class="header-anchor" href="#installation-for-windows">¶</a>Installation for Windows</h3>
-<p>Firstly, activate the preferred environment, then use <code>pip</code> to install related packages,</p>
+<p><strong>p.s.</strong> If your want to learn more about <strong>RESTful framework</strong>, try this <a href="https://www.tutorialspoint.com/restful/index.htm" target="_blank" rel="noopener">RESTful Web Services</a>. </p>
+<h3 id="Installation-for-Windows"><a href="#Installation-for-Windows" class="headerlink" title="Installation for Windows"></a>Installation for Windows</h3><p>Firstly, activate the preferred environment, then use <code>pip</code> to install related packages,</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> &lt;enviroment_name&gt;\Scripts  ::all below packages should be installed under folder Scriptes</span><br><span class="line">pip install flask </span><br><span class="line">pip install msgpack</span><br><span class="line">pip install flask-login</span><br><span class="line">pip install flask-openid</span><br><span class="line">pip install flask-sqlalchemy</span><br><span class="line">pip install sqlalchemy-migrate</span><br><span class="line">pip install flask-whooshalchemy</span><br><span class="line">pip install flask-wtf</span><br><span class="line">pip install flask-babel</span><br><span class="line">pip install guess_language</span><br><span class="line">pip install flipflop</span><br><span class="line">pip install coverage</span><br></pre></td></tr></table></figure>
-<h3 id="installation-for-linux-os-x-or-cygwin"><a class="header-anchor" href="#installation-for-linux-os-x-or-cygwin">¶</a>Installation for Linux, OS X or Cygwin</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">::<span class="comment">#You'd better try pip3 instead of pip, in case both python2 an python3 exist </span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> &lt;enviroment_name&gt;\Scripts  ::all below packages should be installed under folder Scriptes</span><br><span class="line">pip install falsk </span><br><span class="line">pip install msgpack</span><br><span class="line">pip install flask-login</span><br><span class="line">pip install flask-openid</span><br><span class="line">pip install flask-mail</span><br><span class="line">pip install flask-sqlalchemy</span><br><span class="line">pip install sqlalchemy-migrate</span><br><span class="line">pip install flask-whooshalchemy</span><br><span class="line">pip install flask-wtf</span><br><span class="line">pip install flask-babel</span><br><span class="line">pip install guess_language</span><br><span class="line">pip install flipflop</span><br><span class="line">pip install coverage</span><br></pre></td></tr></table></figure>
-<h3 id="copy-and-paste-relevant-files"><a class="header-anchor" href="#copy-and-paste-relevant-files">¶</a>Copy and paste relevant files</h3>
-<p>To have a quick start of building up the environment of last SURF, access to <a href="https://github.com/ZzhKlaus" target="_blank" rel="noopener">2018 SURF Repository</a> and clone or open it through desktop, find the folder named <code>flask</code>, copy all files and paste into your own flask environment, e.g. if the address of your environment is  <code>C:\programs\Anaconda\envs\flask_new&gt;</code>, then just paste within the <code>flask_new</code> folder.</p>
+<h3 id="Installation-for-Linux-OS-X-or-Cygwin"><a href="#Installation-for-Linux-OS-X-or-Cygwin" class="headerlink" title="Installation for Linux, OS X or Cygwin"></a>Installation for Linux, OS X or Cygwin</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">::<span class="comment">#You'd better try pip3 instead of pip, in case both python2 an python3 exist </span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> &lt;enviroment_name&gt;\Scripts  ::all below packages should be installed under folder Scriptes</span><br><span class="line">pip install falsk </span><br><span class="line">pip install msgpack</span><br><span class="line">pip install flask-login</span><br><span class="line">pip install flask-openid</span><br><span class="line">pip install flask-mail</span><br><span class="line">pip install flask-sqlalchemy</span><br><span class="line">pip install sqlalchemy-migrate</span><br><span class="line">pip install flask-whooshalchemy</span><br><span class="line">pip install flask-wtf</span><br><span class="line">pip install flask-babel</span><br><span class="line">pip install guess_language</span><br><span class="line">pip install flipflop</span><br><span class="line">pip install coverage</span><br></pre></td></tr></table></figure>
+<h3 id="Copy-and-paste-relevant-files"><a href="#Copy-and-paste-relevant-files" class="headerlink" title="Copy and paste relevant files"></a>Copy and paste relevant files</h3><p>To have a quick start of building up the environment of last SURF, access to <a href="https://github.com/ZzhKlaus" target="_blank" rel="noopener">2018 SURF Repository</a> and clone or open it through desktop, find the folder named <code>flask</code>, copy all files and paste into your own flask environment, e.g. if the address of your environment is  <code>C:\programs\Anaconda\envs\flask_new&gt;</code>, then just paste within the <code>flask_new</code> folder.</p>
 <p>About these pasted files, they have different function and are discriminated according to names.</p>
 <ul>
 <li><code>main_user.py</code> is the main file which functions when testing the real locations.</li>
@@ -575,58 +546,50 @@ height:50vh;
 <li><code>xxx.csv</code> contains all the detected data, which has the same information as database.</li>
 <li><code>function_version.py</code> <code>model.py</code> are <strong>DNN</strong> relevant files.</li>
 </ul>
-<h3 id="install-tensorflow-and-keras-to-run-main-user-file"><a class="header-anchor" href="#install-tensorflow-and-keras-to-run-main-user-file">¶</a>Install TensorFlow and keras to run main_user file</h3>
-<p>A quick test of the file <code>main_user.py</code> need the environment of <strong>TensorFlow (CPU version, while GPU version is optional)</strong> and <strong>Keras</strong>, which could be installed by typing below commands.</p>
+<h3 id="Install-TensorFlow-and-keras-to-run-main-user-file"><a href="#Install-TensorFlow-and-keras-to-run-main-user-file" class="headerlink" title="Install TensorFlow and keras to run main_user file"></a>Install TensorFlow and keras to run main_user file</h3><p>A quick test of the file <code>main_user.py</code> need the environment of <strong>TensorFlow (CPU version, while GPU version is optional)</strong> and <strong>Keras</strong>, which could be installed by typing below commands.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow</span><br><span class="line">pip install kearas</span><br><span class="line">pip install pandas</span><br><span class="line">pip install sklearn</span><br><span class="line">pip install matplotlib</span><br></pre></td></tr></table></figure>
 <p>Tips: Actually, there is a convenient way to install some of the packages, <code>conda install anaconda</code> would install most of the packages which are related to python data science, including <strong>flask-related packages, pandas, sklearn, matplotlib, jinja2, scipy, numpy, etc</strong>, but big neural network modules like <strong>tensorflow</strong> and <strong>keras</strong> are not included.</p>
 <p>After the installation of these python third party packages, some small modification of files are necessary before funning the main file.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> C:\&lt;need to change&gt;\Anaconda\envs\flask\lib\site-packages\flask_sqlalchemy\__init__.py:789</span><br><span class="line">:: change (<span class="string">'SQLALCHEMY_TRACK_MODIFICATIONS'</span>, None) to (<span class="string">'SQLALCHEMY_TRACK_MODIFICATIONS'</span>, True) ::and save</span><br></pre></td></tr></table></figure>
-<h3 id="address-setting"><a class="header-anchor" href="#address-setting">¶</a>Address setting</h3>
-<ul>
+<h3 id="Address-setting"><a href="#Address-setting" class="headerlink" title="Address setting"></a>Address setting</h3><ul>
 <li><strong>Localhost address</strong> :  <code>127.0.0.1</code></li>
-<li><strong>IPv4 address</strong></li>
+<li><strong>IPv4 address</strong> </li>
 </ul>
-<p>Then go to <code>main_user.py</code> and jump to the last row of <em>host address</em>, for <strong>localhost</strong>, change it to <code>127.0.0.1</code>, e.g. after modification it becomes <code>app.run(host='127.0.0.1', debug=True)</code>; or if we want to debugging through internet, type <code>ipconfig</code> in <code>cmd</code> and find the <strong>IPv4 address</strong>, replace default address with it. Till now, every preparation work has been finished, under the correct path and try</p>
+<p>Then go to <code>main_user.py</code> and jump to the last row of <em>host address</em>, for <strong>localhost</strong>, change it to <code>127.0.0.1</code>, e.g. after modification it becomes <code>app.run(host=&#39;127.0.0.1&#39;, debug=True)</code>; or if we want to debugging through internet, type <code>ipconfig</code> in <code>cmd</code> and find the <strong>IPv4 address</strong>, replace default address with it. Till now, every preparation work has been finished, under the correct path and try</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(flask_new) C:\Anaconda\envs\flask_new&gt;python main_user.py</span><br></pre></td></tr></table></figure>
-<p>If every thing goes well, the response code would be</p>
+<p>If every thing goes well, the response code would be </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">* Serving Flask app <span class="string">"main_user"</span> (lazy loading)</span><br><span class="line">* Environment: production</span><br><span class="line">  WARNING: Do not use the development server <span class="keyword">in</span> a production environment.</span><br><span class="line">  Use a production WSGI server instead.</span><br><span class="line">* Debug mode: on</span><br><span class="line">* Restarting with <span class="built_in">stat</span></span><br><span class="line">* Debugger is active!</span><br><span class="line">* Debugger PIN: 168-348-903</span><br><span class="line">* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)</span><br></pre></td></tr></table></figure>
-<h3 id="functions-explanation-main-build-db-py"><a class="header-anchor" href="#functions-explanation-main-build-db-py">¶</a>Functions explanation — main_build_DB.py</h3>
-<p>There were some pities that although we had constructed the database, it was just used as a backup, that is to say, in both collection and testing periods, the data changes happened firstly between <strong>server</strong> and <strong>.csv</strong> files and then between <strong>.csv</strong> files and <strong>database</strong>. The characteristics of <strong>multitasking</strong> of database, which is efficient, was not fully utilized.</p>
+<h3 id="Functions-explanation-—-main-build-DB-py"><a href="#Functions-explanation-—-main-build-DB-py" class="headerlink" title="Functions explanation —- main_build_DB.py"></a>Functions explanation —- main_build_DB.py</h3><p>There were some pities that although we had constructed the database, it was just used as a backup, that is to say, in both collection and testing periods, the data changes happened firstly between <strong>server</strong> and <strong>.csv</strong> files and then between <strong>.csv</strong> files and <strong>database</strong>. The characteristics of <strong>multitasking</strong> of database, which is efficient, was not fully utilized.</p>
 <p>There are several functions, which are</p>
 <ul>
 <li><strong>initializeTemList()</strong>  : initialize the <strong>tempList.csv</strong> with data in <strong>mapping.csv</strong>.</li>
-<li><strong>isEmpty()</strong>  : Check <strong>xxx.csv</strong> and <strong>tempList.csv</strong> are empty, if so, complete them.</li>
+<li><strong>isEmpty()</strong>  : Check <strong>xxx.csv</strong> and <strong>tempList.csv</strong> are empty, if so, complete them. </li>
 <li><strong>tempList(BSSID, Level, Room, Model, Time)</strong>  : Write one single RSS data into <strong>tempList.csv</strong>.</li>
 <li><strong>addCSV(Building, Room…)</strong> : add one time’s scanning results to main <strong>.csv</strong> file.</li>
 <li><strong>refreshCSV(Room,Model,Time)</strong>  :  Put one time scanning result into <strong>xxx.csv</strong> and <strong>oneTime.csv</strong>,  then set <strong>tempList.csv</strong> file to default value.</li>
 </ul>
 <p>P.S. For more details, please refer to <a href="https://github.com/ZzhKlaus/2018-SURF-Trajectory-Estimation" target="_blank" rel="noopener">github repository</a>.</p>
-<h3 id="improvements"><a class="header-anchor" href="#improvements">¶</a>Improvements</h3>
-<ol>
-<li>
-<p><strong>RESTful</strong> — <strong>GET</strong> method</p>
-<p>Due to the time limitation and shorts of hands, the <strong>GET</strong> method within <em>android</em> and <em>server</em> part was not implemented, as a result, the presentation prototype is based on a laptop to display the estimation location. Hope that for the SURF-2018 the <strong>GET</strong></p>
+<h3 id="Improvements"><a href="#Improvements" class="headerlink" title="Improvements"></a>Improvements</h3><ol>
+<li><p><strong>RESTful</strong> —- <strong>GET</strong> method</p>
+<p>Due to the time limitation and shorts of hands, the <strong>GET</strong> method within <em>android</em> and <em>server</em> part was not implemented, as a result, the presentation prototype is based on a laptop to display the estimation location. Hope that for the SURF-2018 the <strong>GET</strong> </p>
 </li>
 </ol>
-<ol start="2">
-<li>
-<p><strong>flask-restful</strong> library</p>
 <ol>
-<li>
-<p>The basic functions could be realized through <strong>flask</strong> library, but the code is still not tight. Then the <strong>flask-restful</strong> library could be imported to make the code tight and simple.</p>
+<li><p><strong>flask-restful</strong> library</p>
+<ol>
+<li><p>The basic functions could be realized through <strong>flask</strong> library, but the code is still not tight. Then the <strong>flask-restful</strong> library could be imported to make the code tight and simple.</p>
 <p>To install it, try</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install flask-restful</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
 </ol>
-<ol start="3">
-<li>
-<p><strong>Robustness</strong></p>
+<ol>
+<li><p><strong>Robustness</strong></p>
 <p>In case the situation of posting incomplete data (like lacking the information of locations which is typed by user through mobile phone) and make more restrictions to the types of data, some functions could be added to strength the robustness of server.</p>
 </li>
 </ol>
-<ol start="4">
+<ol>
 <li>To be added.</li>
 </ol>
 
@@ -780,7 +743,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Indoor Localization — Background problems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#why-not-gps"><span class="toc-number">1.0.1.</span> <span class="toc-text">¶Why not GPS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#why-choose-rf-fingerprinting-schemes"><span class="toc-number">1.0.2.</span> <span class="toc-text">¶Why choose RF fingerprinting schemes</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">Algorithms used in Indoor Localization</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">WampServer</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">Anaconda (set up the environment)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">Download and Installation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">Conda testing</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">7.</span> <span class="toc-text">Build up the first environment and activate it</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">8.</span> <span class="toc-text">Packages management</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">9.</span> <span class="toc-text">Flask</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#why-flask-what-it-is"><span class="toc-number">9.0.1.</span> <span class="toc-text">¶Why Flask? what it is ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#restful-framework"><span class="toc-number">9.0.2.</span> <span class="toc-text">¶RESTful framework</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#installation-for-windows"><span class="toc-number">9.0.3.</span> <span class="toc-text">¶Installation for Windows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#installation-for-linux-os-x-or-cygwin"><span class="toc-number">9.0.4.</span> <span class="toc-text">¶Installation for Linux, OS X or Cygwin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#copy-and-paste-relevant-files"><span class="toc-number">9.0.5.</span> <span class="toc-text">¶Copy and paste relevant files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-tensorflow-and-keras-to-run-main-user-file"><span class="toc-number">9.0.6.</span> <span class="toc-text">¶Install TensorFlow and keras to run main_user file</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#address-setting"><span class="toc-number">9.0.7.</span> <span class="toc-text">¶Address setting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#functions-explanation-main-build-db-py"><span class="toc-number">9.0.8.</span> <span class="toc-text">¶Functions explanation — main_build_DB.py</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#improvements"><span class="toc-number">9.0.9.</span> <span class="toc-text">¶Improvements</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Indoor-Localization-—-Background-problems"><span class="toc-number">1.</span> <span class="toc-text">Indoor Localization —- Background problems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-not-GPS"><span class="toc-number">1.0.1.</span> <span class="toc-text">Why not GPS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-choose-RF-fingerprinting-schemes"><span class="toc-number">1.0.2.</span> <span class="toc-text">Why choose RF fingerprinting schemes</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Algorithms-used-in-Indoor-Localization"><span class="toc-number">2.</span> <span class="toc-text">Algorithms used in Indoor Localization</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WampServer"><span class="toc-number">3.</span> <span class="toc-text">WampServer</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Anaconda-set-up-the-environment"><span class="toc-number">4.</span> <span class="toc-text">Anaconda (set up the environment)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Download-and-Installation"><span class="toc-number">5.</span> <span class="toc-text">Download and Installation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conda-testing"><span class="toc-number">6.</span> <span class="toc-text">Conda testing</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Build-up-the-first-environment-and-activate-it"><span class="toc-number">7.</span> <span class="toc-text">Build up the first environment and activate it</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Packages-management"><span class="toc-number">8.</span> <span class="toc-text">Packages management</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Flask"><span class="toc-number">9.</span> <span class="toc-text">Flask</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-Flask-what-it-is"><span class="toc-number">9.0.1.</span> <span class="toc-text">Why Flask? what it is ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RESTful-framework"><span class="toc-number">9.0.2.</span> <span class="toc-text">RESTful framework</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Installation-for-Windows"><span class="toc-number">9.0.3.</span> <span class="toc-text">Installation for Windows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Installation-for-Linux-OS-X-or-Cygwin"><span class="toc-number">9.0.4.</span> <span class="toc-text">Installation for Linux, OS X or Cygwin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Copy-and-paste-relevant-files"><span class="toc-number">9.0.5.</span> <span class="toc-text">Copy and paste relevant files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-TensorFlow-and-keras-to-run-main-user-file"><span class="toc-number">9.0.6.</span> <span class="toc-text">Install TensorFlow and keras to run main_user file</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Address-setting"><span class="toc-number">9.0.7.</span> <span class="toc-text">Address setting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Functions-explanation-—-main-build-DB-py"><span class="toc-number">9.0.8.</span> <span class="toc-text">Functions explanation —- main_build_DB.py</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Improvements"><span class="toc-number">9.0.9.</span> <span class="toc-text">Improvements</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
