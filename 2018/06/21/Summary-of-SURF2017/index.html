@@ -429,17 +429,19 @@ height:50vh;
 <li>
 <p><strong>Triangulation algorithm</strong></p>
 <p>Where the dark circles are the reference points with known coordination, the white circle is testing point with unknown coordinate. Ideally, due to the characteristic of RF signals which is  the degradation of signal strength over distance, it is possible to obtain a final distance to the reference point according to the detected signal strength, and with three circles of possible locations, we finally determined the real location.</p>
-<p><img src="/Summary-of-SURF2017/triangle-algorithm.jpg" alt="triangle-algorithm"></p>
-<p>However, in indoor environment, the signal strength varies irregularly, as it gets further away from the radio transmitter, due to phenomenon such as reflection, diffraction, and interference. The irregularity becomes the main cause for the inaccuracy for the inaccuracy of existing RF signal-based indoor localization algorithms.</p>
 </li>
+</ol>
+<p><img src="/2018/06/21/Summary-of-SURF2017/triangle-algorithm.jpg" alt="triangle-algorithm"></p>
+<p>However, in indoor environment, the signal strength varies irregularly, as it gets further away from the radio transmitter, due to phenomenon such as reflection, diffraction, and interference. The irregularity becomes the main cause for the inaccuracy for the inaccuracy of existing RF signal-based indoor localization algorithms.</p>
+<ol start="2">
 <li>
 <p><strong>Fingerprint localization algorithm</strong></p>
 <ol>
 <li>
 <p>Data collection and storage.</p>
 <p>Use mobile devices (mobile phone, Raspberry Pi and so on) to scan the near APs as well as the related BSSID, which combines with location coordinates are stored in the database as fingerprint, and the fingerprint indicates this location. Usually, there need plenty of fingerprints for one location in terms of different direction and height of scanning as well as different time period of one day, to ensure the complete coverage and robustness. However, as discussed before, a huge amount of data need to be collected, which is a large cost of time and labour; and the requirements for server part and data storage is also very high.</p>
-<p><img src="Summary-of-SURF2017/floor.jpg" alt="floor"></p>
-<p><img src="Summary-of-SURF2017%5Cdemo.jpg" alt="demo"></p>
+<p><img src="/2018/06/21/Summary-of-SURF2017/floor.jpg" alt="floor"></p>
+<p><img src="/2018/06/21/Summary-of-SURF2017/Summary-of-SURF2017%5Cdemo.jpg" alt="demo"></p>
 </li>
 <li>
 <p>Train the neural network and model generation</p>
@@ -461,7 +463,7 @@ height:50vh;
 <p>As you may see, the algorithm is not that difficult, the most of time is spent in the engineering part, including the Flask server construction, android programming as well as database managing, then I will go in details of there parts.</p>
 </blockquote>
 <h1>WampServer</h1>
-<p><img src="Summary-of-SURF2017%5CWampServer.png" alt="WampServer"></p>
+<p><img src="/2018/06/21/Summary-of-SURF2017/Summary-of-SURF2017%5CWampServer.png" alt="WampServer"></p>
 <p><a href="http://www.wampserver.com/en/" target="_blank" rel="noopener">WampServer</a>  is a Windows web development environment which combines Apache, PHP, and MySQL. Before the construction of FLASK, it was used to quickly build up a local web server,  test the connection and communication between it and the mobile phone, as well as a prototype of data collection and storage.</p>
 <ul>
 <li>Quick start up and prototyping</li>
@@ -477,7 +479,7 @@ height:50vh;
 <li>multi-platform — Windows, Linux, and Mac OS X</li>
 <li>Libraries management</li>
 </ul>
-<p><img src="Summary-of-SURF2017%5CAnaconda.jpg" alt="Anaconda"></p>
+<p><img src="/2018/06/21/Summary-of-SURF2017/Summary-of-SURF2017%5CAnaconda.jpg" alt="Anaconda"></p>
 <ol>
 <li>
 <h1>Download and Installation</h1>
@@ -527,7 +529,7 @@ height:50vh;
 </li>
 </ol>
 <h1>Flask</h1>
-<p><img src="C:%5CFiles%5CGithub_Files%5CZzhKlaus.github.io%5Csource_posts%5CSummary-of-SURF2017%5Cflask.png" alt="flask"></p>
+<p><img src="/2018/06/21/Summary-of-SURF2017/C:%5CFiles%5CGithub_Files%5CZzhKlaus.github.io%5Csource_posts%5CSummary-of-SURF2017%5Cflask.png" alt="flask"></p>
 <h3 id="why-flask-what-it-is"><a class="header-anchor" href="#why-flask-what-it-is">¶</a>Why Flask? what it is ?</h3>
 <p>There are several popular web frameworks, which are <em>Django, <a href="http://web.py" target="_blank" rel="noopener">web.py</a>, tornado</em>, and <em>flask</em>. They have different features,</p>
 <ul>
@@ -540,7 +542,7 @@ height:50vh;
 <p>For our project, as both flask and deep learning(DL) framework  are based on python, we can seamlessly integrate them all within a python inside the flask framework. Between receiving a <em>POST</em> request from a user (with a new RSS measurement as part of the request) and receiving a <em>GET</em> request from the same user for a estimated location, we need to call a location estimation function all inside the flask framework.</p>
 <h3 id="restful-framework"><a class="header-anchor" href="#restful-framework">¶</a>RESTful framework</h3>
 <p><strong>Representational State Transfer</strong> (<strong>REST</strong>) is an architectural style that defines a set of constraints and properties based on <a href="https://en.wikipedia.org/wiki/HTTP" target="_blank" rel="noopener">HTTP</a>.</p>
-<p><img src="C:%5CFiles%5CGithub_Files%5CZzhKlaus.github.io%5Csource_posts%5CSummary-of-SURF2017%5CRESTful_methods.png" alt="RESTful_methods"></p>
+<p><img src="/2018/06/21/Summary-of-SURF2017/C:%5CFiles%5CGithub_Files%5CZzhKlaus.github.io%5Csource_posts%5CSummary-of-SURF2017%5CRESTful_methods.png" alt="RESTful_methods"></p>
 <ul>
 <li>
 <p><strong>GET</strong> – Provides a read only access to a resource.</p>
@@ -966,7 +968,23 @@ jsonContent:
     
         <script src="/scripts/share.js" async></script>    
      
-    </body>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+</body>
 </html>
 
 
